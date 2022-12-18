@@ -57,6 +57,12 @@ int admin() {
     return 0;
 }
 
+
+
+
+
+//ends!
+
 int main()
 {
     start();
