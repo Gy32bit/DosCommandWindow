@@ -28,6 +28,12 @@ int input_command(string tips) {
 
 //down to see commands:
 
+int clean() {
+    system("cls");
+
+    return 0;
+}
+
 int pause() {
     system("pause");
     
@@ -36,26 +42,42 @@ int pause() {
 }
 
 int admin() {
-    input_command("name: ");
-    if (command == name) {
-        system("cls");
-        input_command("password:");
-        if (command == password) {
-            is_admin = 1;
-            system("cls");
-            start();
+    if (!is_admin) {
+        input_command("name: ");
+        if (command == name) {
+            clean();
+            input_command("password:");
+            if (command == password) {
+                is_admin = 1;
+                clean();
+                start();
 
+            }
+            else {
+                cout << "er" << endl;
+            }
         }
         else {
             cout << "er" << endl;
         }
     }
     else {
-        cout << "er" << endl;
+        cout << "You are admin now!" << endl;
+
     }
 
     return 0;
 }
+
+int exit_admin() {
+    is_admin = 0;
+    clean();
+    start();
+
+    return 0;
+}
+
+
 
 
 
@@ -83,8 +105,19 @@ int main()
 
             continue;
         }
+        if (command == "exit_admin") {
+            exit_admin();
+
+            continue;
+
+        }
+        if (command == "clean") {
+            clean();
+
+            continue;
+
+        }
     }
-    cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>|:-)|<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
 
     return 0;
 }
