@@ -42,7 +42,10 @@ int pause() {
 }
 
 int admin() {
-    if (!is_admin) {
+    if (is_admin) {
+        cout << "You are admin now!" << endl;
+    }
+    else {        
         input_command("name: ");
         if (command == name) {
             clean();
@@ -60,9 +63,7 @@ int admin() {
         else {
             cout << "er" << endl;
         }
-    }
-    else {
-        cout << "You are admin now!" << endl;
+        
 
     }
 
@@ -79,8 +80,20 @@ int exit_admin() {
 
 
 
+int help() {
+    cout << "admin: 登录管理员" << endl;
+    cout << "clean: 清屏" << endl;
+    cout << "help: 打开帮助" << endl;
+    cout << "pause: 暂停" << endl;
+    if (is_admin) {
+        cout << ">>>>管理员内容>>>>" << endl;
+        cout << "exit_admin: 退出管理员" << endl;
 
 
+    }
+
+    return 0;
+}
 
 
 //ends!
@@ -115,6 +128,10 @@ int main()
             clean();
 
             continue;
+
+        }
+        if (command == "help") {
+            help();
 
         }
     }
