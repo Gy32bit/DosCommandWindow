@@ -8,6 +8,13 @@ string name = "Gy32bit";
 string command;
 bool is_admin = 0;
 
+int prese(int key_n) {
+    keybd_event(key_n, 0, 0, 0);
+    keybd_event(key_n, 0, 2, 0);
+
+    return 0;
+}
+
 
 int start() {
     cout << "DosCommandWindow" << endl;
@@ -78,13 +85,32 @@ int exit_admin() {
     return 0;
 }
 
+int cmd() {
+    keybd_event(91, 0, 0, 0);
+    keybd_event(82, 0, 0, 0);
+    keybd_event(91, 0, 2, 0);
+    keybd_event(82, 0, 2, 0);
 
+    Sleep(1000);
+
+
+    prese(67);
+    prese(77);
+    prese(68);
+
+    prese(17);
+    prese(17);
+
+
+    return 0;
+}
 
 int help() {
     cout << "admin: 登录管理员" << endl;
     cout << "clean: 清屏" << endl;
     cout << "help: 打开帮助" << endl;
     cout << "pause: 暂停" << endl;
+    cout << "cmd: 就cmd喽" << endl;
     if (is_admin) {
         cout << ">>>>管理员内容>>>>" << endl;
         cout << "exit_admin: 退出管理员" << endl;
@@ -133,6 +159,13 @@ int main()
         if (command == "help") {
             help();
 
+            continue;
+
+        }
+        if (command == "cmd") {
+            cmd();
+
+            continue;
         }
     }
 
