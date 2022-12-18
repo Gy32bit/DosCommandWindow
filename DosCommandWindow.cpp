@@ -98,8 +98,8 @@ int cmd() {
     prese(77);
     prese(68);
 
-    prese(17);
-    prese(17);
+    prese(13);
+    prese(13);
 
 
     return 0;
